@@ -57,7 +57,7 @@ export default function Home({ contintentsCall }: HomeProps) {
     <Box>
       <Header />
 
-      <Stack gap="80px" align="center">
+      <Stack gap="80px" align="center" mb="40px">
         <Banner />
 
         {/* Travel Types */}
@@ -92,7 +92,7 @@ export default function Home({ contintentsCall }: HomeProps) {
             <Text>Então escolha seu continente</Text>
           </Box>
 
-          <Flex maxW="1240px" align="center" __css={{}}>
+          <Flex maxW="1240px" align="center">
             <Swiper
               loop
               navigation
