@@ -9,8 +9,12 @@ import {
 } from '@chakra-ui/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
+import { GetServerSideProps } from 'next'
+
 import { Banner } from '../components/Banner'
 import { Header } from '../components/Header'
+
+import { api } from '../utils/api'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -39,7 +43,16 @@ const travelTypes = [
   },
 ]
 
-export default function Home() {
+interface ContinentCall {
+  id: string
+  name: string
+  callPhrase: string
+}
+interface HomeProps {
+  contintentsCall: ContinentCall[]
+}
+
+export default function Home({ contintentsCall }: HomeProps) {
   return (
     <Box>
       <Header />
@@ -79,39 +92,44 @@ export default function Home() {
             <Text>Então escolha seu continente</Text>
           </Box>
 
-          <Flex maxW="100vw" align="center">
+          <Flex maxW="1240px" align="center" __css={{}}>
             <Swiper
               loop
               navigation
               pagination={{ clickable: true }}
               modules={[Navigation, Pagination]}
-              onSlideChange={() => console.log('slide change')}
-              onSwiper={swiper => console.log(swiper)}
             >
-              <SwiperSlide>
-                <Box w="1240px" h="450" bg="red">
-                  Slide 1
-                </Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Box bg="red">Slide 2</Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Box bg="red">Slide 3</Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Box bg="red">Slide 4</Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Box bg="red">Slide 5</Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Box bg="red">Slide 6</Box>
-              </SwiperSlide>
+              {contintentsCall.map(call => (
+                <SwiperSlide>
+                  <Flex
+                    h="450"
+                    bg="gray"
+                    key={call.id}
+                    m="auto"
+                    direction="column"
+                    justify="center"
+                    fontWeight="bold"
+                    color="light.headingsAndText"
+                  >
+                    <Text fontSize="5xl">{call.name}</Text>
+                    <Text fontSize="2xl">{call.callPhrase}</Text>
+                  </Flex>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </Flex>
         </Stack>
       </Stack>
     </Box>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await api.get('continents')
+
+  return {
+    props: {
+      contintentsCall: data,
+    },
+  }
 }

@@ -10,7 +10,7 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
       callPhrase: continent.callPhrase,
     }))
 
-    return response.status(200).json({ continentsCall })
+    return response.status(200).json(continentsCall)
   }
 
   return response.status(405).json({ error: 'Method not allowed.' })
