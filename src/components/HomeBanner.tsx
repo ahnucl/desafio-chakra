@@ -4,6 +4,6 @@ import { Image } from '@chakra-ui/react'
  * TODO: Add responsivity
  *
  */
-export function Banner() {
+export function HomeBanner() {
   return <Image src="/images/Banner.svg" w="full" />
 }
