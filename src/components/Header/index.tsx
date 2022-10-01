@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from '@chakra-ui/react'
+import { Flex, Image } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BackButton } from './BackButton'
 
