@@ -1,7 +1,7 @@
 import { Box, Stack } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
 
-import { Banner } from '../components/Banner'
+import { HomeBanner } from '../components/HomeBanner'
 import { CallToAction } from '../components/CallToAction'
 import { Header } from '../components/Header'
 import { TravelTypes } from '../components/TravelTypes'
@@ -28,7 +28,7 @@ export default function Home({ contintentsCall }: HomeProps) {
       <Header />
 
       <Stack gap="80px" align="center" mb="40px">
-        <Banner />
+        <HomeBanner />
 
         <TravelTypes />
 
