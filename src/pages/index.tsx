@@ -16,35 +16,13 @@ import RouteLink from 'next/link'
 
 import { Banner } from '../components/Banner'
 import { Header } from '../components/Header'
+import { TravelTypes } from '../components/TravelTypes'
 
 import { api } from '../utils/api'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
-const travelTypes = [
-  {
-    icon: '/images/cocktail.svg',
-    text: 'vida noturna',
-  },
-  {
-    icon: '/images/surf.svg',
-    text: 'praia',
-  },
-  {
-    icon: '/images/building.svg',
-    text: 'moderno',
-  },
-  {
-    icon: '/images/museum.svg',
-    text: 'classico',
-  },
-  {
-    icon: '/images/earth.svg',
-    text: 'e mais...',
-  },
-]
 
 interface ContinentCall {
   id: string
@@ -64,24 +42,7 @@ export default function Home({ contintentsCall }: HomeProps) {
       <Stack gap="80px" align="center" mb="40px">
         <Banner />
 
-        {/* Travel Types */}
-        <HStack justify="space-between" w="1160px">
-          {travelTypes.map(travelType => (
-            <Flex
-              key={travelType.text}
-              direction="column"
-              align="center"
-              h="145px"
-              w="158px" // Tive que forçar essa largura por conta do alinhamento do item do meio
-              justify="space-between"
-            >
-              <Image src={travelType.icon} boxSize="85px" />
-              <Text fontWeight="semibold" fontSize="2xl">
-                {travelType.text}
-              </Text>
-            </Flex>
-          ))}
-        </HStack>
+        <TravelTypes />
 
         {/* Call to Action */}
         <Stack spacing="52px" align="center" textAlign="center">
