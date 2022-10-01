@@ -8,6 +8,7 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
       id: continent.id,
       name: continent.name,
       callPhrase: continent.callPhrase,
+      callImage: continent.callImage,
     }))
 
     return response.status(200).json(continentsCall)
