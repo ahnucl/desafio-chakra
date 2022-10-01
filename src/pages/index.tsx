@@ -1,20 +1,8 @@
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  Stack,
-  HStack,
-  Divider,
-  Link,
-} from '@chakra-ui/react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
+import { Box, Stack } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
 
-import RouteLink from 'next/link'
-
 import { Banner } from '../components/Banner'
+import { CallToAction } from '../components/CallToAction'
 import { Header } from '../components/Header'
 import { TravelTypes } from '../components/TravelTypes'
 
@@ -24,7 +12,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-interface ContinentCall {
+export interface ContinentCall {
   id: string
   name: string
   callPhrase: string
@@ -44,88 +32,7 @@ export default function Home({ contintentsCall }: HomeProps) {
 
         <TravelTypes />
 
-        {/* Call to Action */}
-        <Stack spacing="52px" align="center" textAlign="center">
-          <Divider
-            w="90px"
-            borderColor="dark.headingsAndText"
-            borderWidth="2px"
-          />
-
-          <Box fontWeight="medium" fontSize="4xl">
-            <Text>Vamos nessa?</Text>
-            <Text>Então escolha seu continente</Text>
-          </Box>
-
-          <Flex
-            maxW="1240px"
-            align="center"
-            sx={{
-              '--swiper-pagination-color': 'colors.highlight',
-              '--swiper-pagination-bullet-inactive-color': 'colors.dark.info',
-              '--swiper-pagination-bullet-width': '1rem',
-              '--swiper-pagination-bullet-height': '1rem',
-              '--swiper-navigation-color': 'colors.highlight',
-              '--swiper-pagination-bullet-inactive-opacity': '1',
-              '.swiper-button-next': {
-                right: 35,
-              },
-              '.swiper-button-prev': {
-                left: 35,
-              },
-              '.swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet ':
-                {
-                  transition: 'all 0.2s',
-                  '&:hover': {
-                    filter: 'opacity(0.7)',
-                  },
-                },
-              '.swiper-button-prev, .swiper-button-next': {
-                '&::after': {
-                  fontSize: '1.8rem',
-                },
-              },
-            }}
-          >
-            <Swiper
-              loop
-              navigation
-              pagination={{ clickable: true }}
-              modules={[Navigation, Pagination]}
-            >
-              {contintentsCall.map(call => (
-                <SwiperSlide key={call.id}>
-                  <Flex
-                    h="450"
-                    bgImage={call.callImage}
-                    bgPosition="center"
-                    m="auto"
-                    direction="column"
-                    justify="center"
-                    align="center"
-                    fontWeight="bold"
-                    color="light.headingsAndText"
-                  >
-                    <RouteLink href={`/continent/${call.id}`} passHref>
-                      <Link
-                        _hover={{
-                          textDecor: 'none',
-                          transition: 'filter 0.2s',
-                          '&': {
-                            filter: 'opacity(0.8)',
-                          },
-                        }}
-                      >
-                        <Text fontSize="5xl">{call.name}</Text>
-                        <Text fontSize="2xl">{call.callPhrase}</Text>
-                      </Link>
-                    </RouteLink>
-                  </Flex>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Flex>
-        </Stack>
+        <CallToAction contintentsCall={contintentsCall} />
       </Stack>
     </Box>
   )
