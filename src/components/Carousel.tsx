@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import { ReactNode } from 'react'
-import { Navigation, Pagination } from 'swiper'
+import { Navigation, Pagination, Autoplay } from 'swiper'
 import { Swiper } from 'swiper/react'
 
 interface CarouselProps {
@@ -43,7 +43,11 @@ export function Carousel({ children }: CarouselProps) {
         loop
         navigation
         pagination={{ clickable: true }}
-        modules={[Navigation, Pagination]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        modules={[Navigation, Pagination, Autoplay]}
       >
         {children}
       </Swiper>
