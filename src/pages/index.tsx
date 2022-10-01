@@ -6,10 +6,13 @@ import {
   Stack,
   HStack,
   Divider,
+  Link,
 } from '@chakra-ui/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 import { GetServerSideProps } from 'next'
+
+import RouteLink from 'next/link'
 
 import { Banner } from '../components/Banner'
 import { Header } from '../components/Header'
@@ -47,6 +50,7 @@ interface ContinentCall {
   id: string
   name: string
   callPhrase: string
+  callImage: string
 }
 interface HomeProps {
   contintentsCall: ContinentCall[]
@@ -92,7 +96,36 @@ export default function Home({ contintentsCall }: HomeProps) {
             <Text>Então escolha seu continente</Text>
           </Box>
 
-          <Flex maxW="1240px" align="center">
+          <Flex
+            maxW="1240px"
+            align="center"
+            sx={{
+              '--swiper-pagination-color': 'colors.highlight',
+              '--swiper-pagination-bullet-inactive-color': 'colors.dark.info',
+              '--swiper-pagination-bullet-width': '1rem',
+              '--swiper-pagination-bullet-height': '1rem',
+              '--swiper-navigation-color': 'colors.highlight',
+              '--swiper-pagination-bullet-inactive-opacity': '1',
+              '.swiper-button-next': {
+                right: 35,
+              },
+              '.swiper-button-prev': {
+                left: 35,
+              },
+              '.swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet ':
+                {
+                  transition: 'all 0.2s',
+                  '&:hover': {
+                    filter: 'opacity(0.7)',
+                  },
+                },
+              '.swiper-button-prev, .swiper-button-next': {
+                '&::after': {
+                  fontSize: '1.8rem',
+                },
+              },
+            }}
+          >
             <Swiper
               loop
               navigation
@@ -100,19 +133,32 @@ export default function Home({ contintentsCall }: HomeProps) {
               modules={[Navigation, Pagination]}
             >
               {contintentsCall.map(call => (
-                <SwiperSlide>
+                <SwiperSlide key={call.id}>
                   <Flex
                     h="450"
-                    bg="gray"
-                    key={call.id}
+                    bgImage={call.callImage}
+                    bgPosition="center"
                     m="auto"
                     direction="column"
                     justify="center"
+                    align="center"
                     fontWeight="bold"
                     color="light.headingsAndText"
                   >
-                    <Text fontSize="5xl">{call.name}</Text>
-                    <Text fontSize="2xl">{call.callPhrase}</Text>
+                    <RouteLink href={`/continent/${call.id}`} passHref>
+                      <Link
+                        _hover={{
+                          textDecor: 'none',
+                          transition: 'filter 0.2s',
+                          '&': {
+                            filter: 'opacity(0.8)',
+                          },
+                        }}
+                      >
+                        <Text fontSize="5xl">{call.name}</Text>
+                        <Text fontSize="2xl">{call.callPhrase}</Text>
+                      </Link>
+                    </RouteLink>
                   </Flex>
                 </SwiperSlide>
               ))}
