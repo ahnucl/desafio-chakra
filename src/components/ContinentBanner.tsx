@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 
 interface ContinentBannerProps {
   bgImage: string
@@ -16,13 +16,14 @@ export function ContinentBanner({ title, bgImage }: ContinentBannerProps) {
       bgSize="cover"
     >
       <Flex maxW="1160px" h="100%" pb="59px" margin="auto" align="end">
-        <Text
+        <Heading
+          lineHeight="72px"
           fontWeight="semibold"
           fontSize="5xl"
           color="light.headingsAndText"
         >
           {title}
-        </Text>
+        </Heading>
       </Flex>
     </Box>
   )
