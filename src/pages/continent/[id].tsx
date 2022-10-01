@@ -1,7 +1,18 @@
-import { Box } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  Text,
+  Tooltip,
+  VStack,
+} from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
+import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { ContinentBanner } from '../../components/ContinentBanner'
 import { Header } from '../../components/Header'
+import { Info } from '../../components/InfoContainer'
 import { api } from '../../utils/api'
 
 interface Info {
@@ -36,8 +47,32 @@ export default function Continent({
   return (
     <Box>
       <Header />
-      <ContinentBanner bgImage={pageImage || callImage} title={name} />
-      <h1>Continent</h1>
+      <Stack spacing="80px" align="center">
+        <ContinentBanner bgImage={pageImage || callImage} title={name} />
+
+        <HStack w="1160px" justify="space-between">
+          <Text fontSize="2xl" w="600px" textAlign="justify">
+            {description}
+          </Text>
+
+          {/* Info Container */}
+          <Flex w="490px" justify="space-between">
+            {info.map(infoItem => (
+              <Info
+                key={infoItem.id}
+                count={infoItem.count}
+                description={infoItem.description}
+                hasToolTip={infoItem.id === 2}
+              />
+            ))}
+          </Flex>
+        </HStack>
+
+        {/* Cidades Mais 100 */}
+        <Box w="1160px">
+          <Heading>Cidades +100</Heading>
+        </Box>
+      </Stack>
     </Box>
   )
 }
