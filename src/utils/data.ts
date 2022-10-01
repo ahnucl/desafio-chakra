@@ -19,7 +19,7 @@ interface Continent {
   callImage: string
   pageImage?: string
   info: Info[]
-  cidadesMais100: City[]
+  plus100Cities: City[]
 }
 
 const continents: Continent[] = [
@@ -49,7 +49,7 @@ const continents: Continent[] = [
         count: 9,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Nova York',
@@ -101,7 +101,7 @@ const continents: Continent[] = [
         count: 10,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Buenos Aires',
@@ -147,7 +147,7 @@ const continents: Continent[] = [
         count: 35,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Hong Kong',
@@ -205,7 +205,7 @@ const continents: Continent[] = [
         count: 9,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Joanesburgo',
@@ -239,7 +239,7 @@ const continents: Continent[] = [
         count: 27,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Londres',
@@ -297,7 +297,7 @@ const continents: Continent[] = [
         count: 8,
       },
     ],
-    cidadesMais100: [
+    plus100Cities: [
       {
         id: 0,
         city: 'Sydney',
