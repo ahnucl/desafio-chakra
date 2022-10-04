@@ -302,7 +302,7 @@ const continents: Continent[] = [
         id: 0,
         city: 'Sydney',
         country: 'Austrália',
-        flag: 'https://www.worldometers.info/img/flags/as-flag.gif',
+        flag: 'https://flagicons.lipis.dev/flags/4x3/au.svg',
       },
     ],
   },
