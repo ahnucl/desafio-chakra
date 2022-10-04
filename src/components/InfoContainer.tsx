@@ -22,7 +22,7 @@ export function Info({ count, description, hasToolTip = false }: InfoProps) {
           label="cidades do continente que estão entre as 100 mais visitadas do mundo"
           color="light.headingsAndText"
         >
-          <InfoOutlineIcon w={4} h={4} color="dark.info50%" />
+          <InfoOutlineIcon w={4} h={4} color="dark.info50" />
         </Tooltip>
       )}
     </HStack>
