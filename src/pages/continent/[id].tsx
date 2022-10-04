@@ -3,6 +3,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Image,
   Stack,
   Text,
   Tooltip,
@@ -45,7 +46,7 @@ export default function Continent({
   plus100Cities,
 }: ContinentProps) {
   return (
-    <Box>
+    <Box mb="40px">
       <Header />
       <Stack spacing="80px" align="center">
         <ContinentBanner bgImage={pageImage || callImage} title={name} />
@@ -69,9 +70,50 @@ export default function Continent({
         </HStack>
 
         {/* Cidades Mais 100 */}
-        <Box w="1160px">
+        <Stack w="1160px" spacing="40px">
           <Heading>Cidades +100</Heading>
-        </Box>
+          <Flex gap="45px" wrap="wrap">
+            {plus100Cities.map(city => (
+              <Flex
+                key={city.id}
+                w="256px"
+                h="279px"
+                bg="light.white"
+                flexDir="column"
+                border="1px"
+                borderRadius="4px"
+                borderColor="highlight50"
+              >
+                <Image src={city.flag} w="256px" h="173" objectFit="cover" />
+                <Flex
+                  justify="space-between"
+                  p="1.125rem"
+                  align="center"
+                  maxW="full"
+                >
+                  <Stack gap={3} fontFamily="Barlow">
+                    <Text
+                      fontSize="xl"
+                      fontWeight="semibold"
+                      lineHeight="shorter"
+                    >
+                      {city.city}
+                    </Text>
+                    <Text color="dark.info" lineHeight="none">
+                      {city.country}
+                    </Text>
+                  </Stack>
+                  <Image
+                    src={city.flag}
+                    boxSize="30px"
+                    objectFit="cover"
+                    borderRadius="full"
+                  />
+                </Flex>
+              </Flex>
+            ))}
+          </Flex>
+        </Stack>
       </Stack>
     </Box>
   )
