@@ -1,4 +1,4 @@
-import { Box, HStack, Text, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, Text, Tooltip } from '@chakra-ui/react'
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 
 interface InfoProps {
@@ -9,7 +9,7 @@ interface InfoProps {
 
 export function Info({ count, description, hasToolTip = false }: InfoProps) {
   return (
-    <HStack align="end">
+    <Flex align="end">
       <Box fontWeight="semibold" lineHeight={9} textAlign="center">
         <Text fontSize="5xl" color="highlight">
           {count}
@@ -22,9 +22,9 @@ export function Info({ count, description, hasToolTip = false }: InfoProps) {
           label="cidades do continente que estão entre as 100 mais visitadas do mundo"
           color="light.headingsAndText"
         >
-          <InfoOutlineIcon w={4} h={4} color="dark.info50" />
+          <InfoOutlineIcon w={4} h={4} color="dark.info50" mb={2.5} ml={2} />
         </Tooltip>
       )}
-    </HStack>
+    </Flex>
   )
 }
