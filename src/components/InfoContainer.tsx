@@ -10,12 +10,14 @@ interface InfoProps {
 export function Info({ count, description, hasToolTip = false }: InfoProps) {
   return (
     <Flex align="end">
-      <Box fontWeight="semibold" lineHeight={9} textAlign="center">
-        <Text fontSize="5xl" color="highlight">
+      <Box lineHeight={['30px', '50px']} textAlign={['left', 'center']}>
+        <Text fontWeight="semibold" fontSize={['2xl', '5xl']} color="highlight">
           {count}
         </Text>
 
-        <Text fontSize="2xl">{description}</Text>
+        <Text fontWeight={['regular', 'semibold']} fontSize={['lg', '2xl']}>
+          {description}
+        </Text>
       </Box>
       {hasToolTip && (
         <Tooltip

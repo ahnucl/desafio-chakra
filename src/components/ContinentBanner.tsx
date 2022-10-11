@@ -9,17 +9,24 @@ export function ContinentBanner({ title, bgImage }: ContinentBannerProps) {
   return (
     <Box
       w="full"
-      h="500px"
+      h={['150px', '500px']}
       bgImage={bgImage}
       bgRepeat="no-repeat"
       bgPos="center"
       bgSize="cover"
     >
-      <Flex maxW="1160px" h="100%" pb="59px" margin="auto" align="end">
+      <Flex
+        maxW="1160px"
+        h="100%"
+        pb={[null, '59px']}
+        margin="auto"
+        align={['center', 'end']}
+        justify={['center', 'start']}
+      >
         <Heading
-          lineHeight="72px"
+          lineHeight={['42px', '72px']}
           fontWeight="semibold"
-          fontSize="5xl"
+          fontSize={['1.75rem', '5xl']}
           color="light.headingsAndText"
         >
           {title}

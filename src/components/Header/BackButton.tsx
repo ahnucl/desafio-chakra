@@ -7,9 +7,9 @@ export function BackButton() {
     <Link href="/">
       <IconButton
         position="absolute"
-        left="140px"
+        left={['16px', '140px']}
         variant="link"
-        fontSize="2rem"
+        fontSize={['1rem', '2rem']}
         size="sm"
         _hover={{
           transition: 'filter 0.2s',
