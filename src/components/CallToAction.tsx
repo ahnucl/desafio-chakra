@@ -10,10 +10,14 @@ interface CallToActionProps {
 
 export function CallToAction({ contintentsCall }: CallToActionProps) {
   return (
-    <Stack spacing="52px" align="center" textAlign="center">
-      <Divider w="90px" borderColor="dark.headingsAndText" borderWidth="2px" />
+    <Stack spacing={['24px', '52px']} align="center" textAlign="center">
+      <Divider
+        w={['60px', '90px']}
+        borderColor="dark.headingsAndText"
+        borderWidth={['1px', '2px']}
+      />
 
-      <Box fontWeight="medium" fontSize="4xl">
+      <Box fontWeight="medium" fontSize={['xl', '4xl']}>
         <Text>Vamos nessa?</Text>
         <Text>Então escolha seu continente</Text>
       </Box>
@@ -22,7 +26,7 @@ export function CallToAction({ contintentsCall }: CallToActionProps) {
         {contintentsCall.map(call => (
           <SwiperSlide key={call.id}>
             <Flex
-              h="450"
+              h={['250', '450']}
               bgImage={call.callImage}
               bgPosition="center"
               m="auto"
@@ -42,8 +46,8 @@ export function CallToAction({ contintentsCall }: CallToActionProps) {
                     },
                   }}
                 >
-                  <Text fontSize="5xl">{call.name}</Text>
-                  <Text fontSize="2xl">{call.callPhrase}</Text>
+                  <Text fontSize={['2xl', '5xl']}>{call.name}</Text>
+                  <Text fontSize={['sm', '2xl']}>{call.callPhrase}</Text>
                 </Link>
               </RouteLink>
             </Flex>

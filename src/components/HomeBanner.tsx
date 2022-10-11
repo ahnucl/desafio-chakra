@@ -1,9 +1,10 @@
 import { Image } from '@chakra-ui/react'
 
-/**
- * TODO: Add responsivity
- *
- */
-export function HomeBanner() {
-  return <Image src="/images/Banner.svg" w="full" />
+interface HomeBannerProps {
+  showWide: boolean
+}
+export function HomeBanner({ showWide }: HomeBannerProps) {
+  const imgSrc = showWide ? '/images/Banner.svg' : '/images/BannerMobile.svg'
+
+  return <Image src={imgSrc} w="full" />
 }

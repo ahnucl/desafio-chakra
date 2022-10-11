@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, useBreakpointValue } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
 
 import { HomeBanner } from '../components/HomeBanner'
@@ -23,14 +23,19 @@ interface HomeProps {
 }
 
 export default function Home({ contintentsCall }: HomeProps) {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  })
+
   return (
     <Box>
-      <Header />
+      <Header showWide={!!isWideVersion} />
 
-      <Stack gap="80px" align="center" mb="40px">
-        <HomeBanner />
+      <Stack gap={['36px', '80px']} align="center" mb="40px">
+        <HomeBanner showWide={!!isWideVersion} />
 
-        <TravelTypes />
+        <TravelTypes showWide={!!isWideVersion} />
 
         <CallToAction contintentsCall={contintentsCall} />
       </Stack>
