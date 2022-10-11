@@ -2,16 +2,12 @@ import {
   Box,
   Flex,
   Heading,
-  HStack,
   Image,
   Stack,
   Text,
-  Tooltip,
   useBreakpointValue,
-  VStack,
 } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
-import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { ContinentBanner } from '../../components/ContinentBanner'
 import { Header } from '../../components/Header'
 import { Info } from '../../components/InfoContainer'
